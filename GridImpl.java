@@ -5,9 +5,9 @@ import java.util.List;
 public class GridImpl implements Grid {
     private long[][] matrix;
 
-    private final List<Integer> greenNumbers = new ArrayList<>(List.of(0, 1, 4, 5, 7, 8));
+    private final List<Integer> greenNumbersOfChange = new ArrayList<>(List.of(0, 1, 4, 5, 7, 8));
 
-    private final List<Integer> redNumbers = new ArrayList<>(List.of(0, 1, 2, 4, 5, 7, 8));
+    private final List<Integer> redNumbersOfChange = new ArrayList<>(List.of(0, 1, 2, 4, 5, 7, 8));
 
     public GridImpl(int rows, int columns) {
         setMatrixSize(rows, columns);
@@ -71,9 +71,9 @@ public class GridImpl implements Grid {
 
         switch (currentCell.getColor()) {
             case GREEN:
-                return greenNumbers.contains(greenSurroundingCellsCount);
+                return greenNumbersOfChange.contains(greenSurroundingCellsCount);
             case RED:
-                return !redNumbers.contains(greenSurroundingCellsCount);
+                return !redNumbersOfChange.contains(greenSurroundingCellsCount);
         }
 
         return false;
