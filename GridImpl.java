@@ -67,13 +67,13 @@ public class GridImpl implements Grid {
     @Override
     public boolean isEligibleToChangeCellColor(Cell currentCell) {
         List<Integer> surroundingCells = getSurroundingCells(this.matrix, currentCell);
-        int onesCount = (int) surroundingCells.stream().filter(e -> e == 1).count();
+        int greenSurroundingCellsCount = (int) surroundingCells.stream().filter(e -> e == 1).count();
 
         switch (currentCell.getColor()) {
             case GREEN:
-                return greenNumbers.contains(onesCount);
+                return greenNumbers.contains(greenSurroundingCellsCount);
             case RED:
-                return !redNumbers.contains(onesCount);
+                return !redNumbers.contains(greenSurroundingCellsCount);
         }
 
         return false;
