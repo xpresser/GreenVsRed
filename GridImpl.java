@@ -10,7 +10,7 @@ public class GridImpl implements Grid {
     private final List<Integer> redNumbers = new ArrayList<>(List.of(0, 1, 2, 4, 5, 7, 8));
 
     public GridImpl(int rows, int columns) {
-        setMatrixSize(columns, rows);
+        setMatrixSize(rows, columns);
     }
 
     @Override
