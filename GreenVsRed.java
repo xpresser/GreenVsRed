@@ -25,8 +25,8 @@ public class GreenVsRed {
         Cell targetCell = new Cell(grid.getMatrix(), targetCellRow, targetCellColumn);
 
         int generationTimes = Integer.parseInt(lastArguments[2]);
-        long result = grid.getGenerationsCount(targetCell, generationTimes);
+        long greenColorGenerationCount = grid.getGenerationsCount(targetCell, generationTimes);
 
-        System.out.printf("# expected result: %d", result);
+        System.out.printf("# expected result: %d", greenColorGenerationCount);
     }
 }
