@@ -4,4 +4,6 @@ public interface GridErrorMessage {
     String EQUAL_OR_GREATER_THAN_1000 = "cannot be equal or greater than 1000!";
 
     String INVALID_COORDINATES = "Invalid coordinates for cell!";
+
+    String ZERO_OR_A_NEGATIVE_NUMBER = "cannot be zero or a negative number!";
 }
