@@ -106,6 +106,10 @@ public class GridImpl implements Grid {
             System.out.printf("Width %s%n", GridErrorMessage.EQUAL_OR_GREATER_THAN_1000);
         } else if (height >= 1000) {
             System.out.printf("Height %s%n", GridErrorMessage.EQUAL_OR_GREATER_THAN_1000);
+        } else if (width <= 0) {
+            System.out.printf("Width %s%n", GridErrorMessage.ZERO_OR_A_NEGATIVE_NUMBER);
+        } else if (height <= 0) {
+            System.out.printf("Height %s%n", GridErrorMessage.ZERO_OR_A_NEGATIVE_NUMBER);
         }
     }
 
