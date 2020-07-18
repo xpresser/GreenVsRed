@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class GridImpl implements Grid {
-    private Short[][] matrix;
+    private Boolean[][] matrix;
 
     private final List<Short> greenNumbersOfChange = Stream.of(0, 1, 4, 5, 7, 8)
             .map(Integer::shortValue).collect(Collectors.toList());
@@ -25,7 +25,7 @@ public class GridImpl implements Grid {
             for (short i = 0; i < generationTurns; i++) {
                 this.matrix = getGridAfterGeneration(matrix);
 
-                if (matrix[cell.getRow()][cell.getColumn()] == 1) {
+                if (matrix[cell.getRow()][cell.getColumn()]) {
                     generationCount += 1;
                 }
             }
@@ -38,13 +38,13 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public boolean isInBoundaries(Short[][] grid, short row, short col) {
+    public boolean isInBoundaries(Boolean[][] grid, short row, short col) {
         return row >= 0 && row < grid.length && col >= 0 && col < grid[row].length;
     }
 
     @Override
-    public Short[][] getGridAfterGeneration(Short[][] matrix) {
-        Short[][] resultGrid = Arrays.stream(matrix).map(Short[]::clone).toArray(Short[][]::new);
+    public Boolean[][] getGridAfterGeneration(Boolean[][] matrix) {
+        Boolean[][] resultGrid = Arrays.stream(matrix).map(Boolean[]::clone).toArray(Boolean[][]::new);
         Cell currentCell;
 
         for (short row = 0; row < matrix.length; row++) {
@@ -53,12 +53,12 @@ public class GridImpl implements Grid {
                 switch (currentCell.getColor()) {
                     case RED:
                         if (isEligibleToChangeCellColor(currentCell)) {
-                            resultGrid[row][col] = 1;
+                            resultGrid[row][col] = true;
                         }
                         break;
                     case GREEN:
                         if (isEligibleToChangeCellColor(currentCell)) {
-                            resultGrid[row][col] = 0;
+                            resultGrid[row][col] = false;
                         }
                         break;
                 }
@@ -84,7 +84,7 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public List<Short> getSurroundingCells(Short[][] grid, Cell cell) {
+    public List<Short> getSurroundingCells(Boolean[][] grid, Cell cell) {
         List<Short> surroundings = new ArrayList<>();
 
         for (short rowIndexLimit = -1; rowIndexLimit <= 1; rowIndexLimit++) {
@@ -94,7 +94,7 @@ public class GridImpl implements Grid {
 
                 if (isInBoundaries(grid, row, column)) {
                     if ((rowIndexLimit != 0) || (columnIndexLimit != 0)) {
-                        surroundings.add(grid[row][column]);
+                        surroundings.add((short) (grid[row][column] ? 1 : 0));
                     }
                 }
             }
@@ -117,13 +117,13 @@ public class GridImpl implements Grid {
         }
     }
 
-    public Short[][] getMatrix() {
+    public Boolean[][] getMatrix() {
         return this.matrix;
     }
 
     public void setMatrixSize(short width, short height) {
         checkGridLimitations(width, height);
 
-        this.matrix = new Short[width][height];
+        this.matrix = new Boolean[width][height];
     }
 }

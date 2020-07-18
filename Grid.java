@@ -3,11 +3,11 @@ import java.util.List;
 public interface Grid {
     short getGenerationsCount(Cell cell, short generationTurns);
 
-    boolean isInBoundaries(Short[][] grid, short row, short col);
+    boolean isInBoundaries(Boolean[][] grid, short row, short col);
 
-    Short[][] getGridAfterGeneration(Short[][] matrix);
+    Boolean[][] getGridAfterGeneration(Boolean[][] matrix);
 
     boolean isEligibleToChangeCellColor(Cell currentCell);
 
-    List<Short> getSurroundingCells(Short[][] grid, Cell cell);
+    List<Short> getSurroundingCells(Boolean[][] grid, Cell cell);
 }

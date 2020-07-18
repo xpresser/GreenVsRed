@@ -9,7 +9,7 @@ public class Cell {
 
     }
 
-    public Cell(Short[][] grid, short row, short column) {
+    public Cell(Boolean[][] grid, short row, short column) {
         setRow(row);
         setColumn(column);
         setColor(grid, row, column);
@@ -35,11 +35,7 @@ public class Cell {
         return this.color;
     }
 
-    public void setColor(Short[][] grid, short width, short height) {
-        if (grid[width][height] == 1) {
-            this.color = CellColor.GREEN;
-        } else if (grid[width][height] == 0){
-            this.color = CellColor.RED;
-        }
+    public void setColor(Boolean[][] grid, short width, short height) {
+        this.color = grid[width][height] ? CellColor.GREEN : CellColor.RED;
     }
 }

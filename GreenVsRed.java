@@ -11,9 +11,9 @@ public class GreenVsRed {
         GridImpl grid = new GridImpl(gridSizeInput[0], gridSizeInput[1]);
 
         for (int i = 0; i < grid.getMatrix().length; i++) {
-            Short[] generationZeroState = Arrays.stream(scanner.nextLine().split(""))
-                    .map(Short::parseShort)
-                    .toArray(Short[]::new);
+            Boolean[] generationZeroState = Arrays.stream(scanner.nextLine().split(""))
+                    .map(element -> Byte.parseByte(element) == 1)
+                    .toArray(Boolean[]::new);
 
             grid.getMatrix()[i] = generationZeroState;
         }
