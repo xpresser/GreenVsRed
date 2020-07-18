@@ -1,7 +1,7 @@
 public class Cell {
-    private int row;
+    private short row;
 
-    private int column;
+    private short column;
 
     private CellColor color;
 
@@ -9,25 +9,25 @@ public class Cell {
 
     }
 
-    public Cell(long[][] grid, int row, int column) {
+    public Cell(Short[][] grid, short row, short column) {
         setRow(row);
         setColumn(column);
         setColor(grid, row, column);
     }
 
-    public int getRow() {
+    public short getRow() {
         return this.row;
     }
 
-    public void setRow(int row) {
+    public void setRow(short row) {
         this.row = row;
     }
 
-    public int getColumn() {
+    public short getColumn() {
         return this.column;
     }
 
-    public void setColumn(int column) {
+    public void setColumn(short column) {
         this.column = column;
     }
 
@@ -35,7 +35,7 @@ public class Cell {
         return this.color;
     }
 
-    public void setColor(long[][] grid, int width, int height) {
+    public void setColor(Short[][] grid, short width, short height) {
         if (grid[width][height] == 1) {
             this.color = CellColor.GREEN;
         } else if (grid[width][height] == 0){

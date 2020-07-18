@@ -4,28 +4,28 @@ import java.util.Scanner;
 public class GreenVsRed {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] gridSizeInput = Arrays.stream(scanner.nextLine().split(",\\s+"))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+        Short[] gridSizeInput = Arrays.stream(scanner.nextLine().split(",\\s+"))
+                .map(Short::parseShort)
+                .toArray(Short[]::new);
 
         GridImpl grid = new GridImpl(gridSizeInput[0], gridSizeInput[1]);
 
         for (int i = 0; i < grid.getMatrix().length; i++) {
-            long[] generationZeroState = Arrays.stream(scanner.nextLine().split(""))
-                    .mapToLong(Long::parseLong)
-                    .toArray();
+            Short[] generationZeroState = Arrays.stream(scanner.nextLine().split(""))
+                    .map(Short::parseShort)
+                    .toArray(Short[]::new);
 
             grid.getMatrix()[i] = generationZeroState;
         }
 
         String[] lastArguments = scanner.nextLine().split(",\\s+");
 
-        int targetCellRow = Integer.parseInt(lastArguments[0]);
-        int targetCellColumn = Integer.parseInt(lastArguments[1]);
+        short targetCellRow = Short.parseShort(lastArguments[0]);
+        short targetCellColumn = Short.parseShort(lastArguments[1]);
         Cell targetCell = new Cell(grid.getMatrix(), targetCellRow, targetCellColumn);
 
-        int generationTimes = Integer.parseInt(lastArguments[2]);
-        long greenColorGenerationCount = grid.getGenerationsCount(targetCell, generationTimes);
+        short generationTimes = Short.parseShort(lastArguments[2]);
+        short greenColorGenerationCount = grid.getGenerationsCount(targetCell, generationTimes);
 
         System.out.printf("# expected result: %d", greenColorGenerationCount);
     }
